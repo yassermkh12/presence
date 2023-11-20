@@ -1,9 +1,10 @@
-package com.example.presence.services;
+package com.example.presence.services.impl;
 
 import com.example.presence.entities.Etudiant;
 import com.example.presence.entitiesDto.EtudiantDto;
 import com.example.presence.exceptions.NotFoundException;
 import com.example.presence.repositories.IEtudiantRepository;
+import com.example.presence.services.IEtudiantService;
 import com.example.presence.transformers.EtudiantTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,10 +12,10 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 @Service
-public class EtudiantService {
+public class EtudiantService implements IEtudiantService {
     @Autowired
     private IEtudiantRepository etudiantRepository;
-    //getAll
+
     public List<EtudiantDto> getAllEtudiant() throws NotFoundException {
         List<Etudiant> etudiants = etudiantRepository.findAll();
         if (etudiants != null) {
