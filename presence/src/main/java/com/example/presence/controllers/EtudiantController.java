@@ -36,6 +36,15 @@ public class EtudiantController {
         EtudiantDto createEtudiantDto = etudiantService.saveEtudiant(etudiantDto);
         return new ResponseEntity<>(createEtudiantDto, HttpStatus.CREATED);
     }
+    @PutMapping("/update/{id}")
+    public ResponseEntity<EtudiantDto> updateEtudiant(@PathVariable Long id, @RequestBody EtudiantDto etudiantDto){
+        EtudiantDto etudiantDtoUpdate = etudiantService.updateEtudiant(id,etudiantDto);
+        if (etudiantDtoUpdate != null) {
+            return new ResponseEntity<>(etudiantDtoUpdate, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 
     @DeleteMapping("/delete")
     public ResponseEntity<Void> deleteEtudiant(@PathVariable Long id){

@@ -27,6 +27,23 @@ public class EtudiantService {
         etudiantRepository.save(etudiant);
         return EtudiantTransformer.entityToDto(etudiant);
     }
+    public EtudiantDto updateEtudiant(Long id, EtudiantDto etudiantDtoUpdate){
+        Optional<Etudiant> etudiantOptional = etudiantRepository.findById(id);
+
+        if(etudiantOptional.isPresent()){
+            Etudiant etudiant = etudiantOptional.get();
+            etudiant.setNom(etudiantDtoUpdate.getNom());
+            etudiant.setPrenom(etudiantDtoUpdate.getPrenom());
+            etudiant.setCin(etudiantDtoUpdate.getCin());
+            etudiant.setEmail(etudiantDtoUpdate.getEmail());
+            etudiant.setPassword(etudiantDtoUpdate.getPassword());
+
+            etudiantRepository.save(etudiant);
+            return EtudiantTransformer.entityToDto(etudiant);
+        }else {
+            return null;
+        }
+    }
     public void deleteEtudiant(Long id){
         etudiantRepository.deleteById(id);
     }
