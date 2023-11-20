@@ -22,10 +22,10 @@ public class EtudiantService {
         Optional<Etudiant> etudiant = etudiantRepository.findById(id);
         return Optional.ofNullable(etudiant.map(EtudiantTransformer::entityToDto).orElse(null));
     }
-    public EtudiantDto saveEtudiant(EtudiantDto etudiantDto){
-        Etudiant etudiant = EtudiantTransformer.dtoToEntity(etudiantDto);
-        etudiantRepository.save(etudiant);
-        return EtudiantTransformer.entityToDto(etudiant);
+    public EtudiantDto saveEtudiant(EtudiantDto etudiantDto) {
+            Etudiant etudiant = EtudiantTransformer.dtoToEntity(etudiantDto);
+            etudiantRepository.save(etudiant);
+            return EtudiantTransformer.entityToDto(etudiant);
     }
     public EtudiantDto updateEtudiant(Long id, EtudiantDto etudiantDtoUpdate){
         Optional<Etudiant> etudiantOptional = etudiantRepository.findById(id);

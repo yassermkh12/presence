@@ -4,6 +4,7 @@ import com.example.presence.entities.Etudiant;
 import com.example.presence.entitiesDto.EtudiantDto;
 import com.example.presence.services.EtudiantService;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -32,7 +33,7 @@ public class EtudiantController {
         }
     }
     @PostMapping("/save")
-    public ResponseEntity<EtudiantDto> saveEtudiant(@RequestBody EtudiantDto etudiantDto){
+    public ResponseEntity<EtudiantDto> saveEtudiant(@RequestBody @Valid EtudiantDto etudiantDto){
         EtudiantDto createEtudiantDto = etudiantService.saveEtudiant(etudiantDto);
         return new ResponseEntity<>(createEtudiantDto, HttpStatus.CREATED);
     }
