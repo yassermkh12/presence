@@ -1,14 +1,13 @@
 package com.example.presence.controllers;
 
-import com.example.presence.entities.Etudiant;
 import com.example.presence.entitiesDto.EtudiantDto;
 import com.example.presence.exceptions.NotFoundException;
-import com.example.presence.services.EtudiantService;
+import com.example.presence.services.IEtudiantService;
+import com.example.presence.services.impl.EtudiantService;
 
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +17,7 @@ import java.util.*;
 @RequestMapping("/api")
 public class EtudiantController {
     @Autowired
-    private EtudiantService etudiantService;
+    private IEtudiantService etudiantService;
     @GetMapping("/all")
     public ResponseEntity<List<EtudiantDto>> getAllEtudiant() throws NotFoundException {
         List<EtudiantDto> etudiantDtos = etudiantService.getAllEtudiant();
