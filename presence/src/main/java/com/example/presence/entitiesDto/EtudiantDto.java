@@ -1,20 +1,16 @@
-package com.example.presence.entities;
+package com.example.presence.entitiesDto;
 
-import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.http.HttpStatusCode;
 
-@Entity
-@Table(name = "etudiant")
-@NoArgsConstructor
 @Data
-public class Etudiant {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+@NoArgsConstructor
+public class EtudiantDto {
     private Long id;
     @NotBlank(message = "le champs nom ne doit pas etre vide")
     @NotNull(message = "le nom ne doit pas etre null")
