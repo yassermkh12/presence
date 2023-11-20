@@ -2,6 +2,7 @@ package com.example.presence.controllers;
 
 import com.example.presence.entities.Etudiant;
 import com.example.presence.entitiesDto.EtudiantDto;
+import com.example.presence.exceptions.NotFoundException;
 import com.example.presence.services.EtudiantService;
 
 import jakarta.validation.Valid;
@@ -19,18 +20,14 @@ public class EtudiantController {
     @Autowired
     private EtudiantService etudiantService;
     @GetMapping("/all")
-    public ResponseEntity<List<EtudiantDto>> getAllEtudiant(){
+    public ResponseEntity<List<EtudiantDto>> getAllEtudiant() throws NotFoundException {
         List<EtudiantDto> etudiantDtos = etudiantService.getAllEtudiant();
         return new ResponseEntity<>(etudiantDtos, HttpStatus.OK);
     }
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<EtudiantDto>> getEtudiantById(@PathVariable Long id){
+    public ResponseEntity<Optional<EtudiantDto>> getEtudiantById(@PathVariable Long id) throws NotFoundException {
         Optional<EtudiantDto> etudiantDto = etudiantService.getEtudiantById(id);
-        if (etudiantDto != null) {
-            return new ResponseEntity<>(etudiantDto, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        return new ResponseEntity<>(etudiantDto, HttpStatus.OK);
     }
     @PostMapping("/save")
     public ResponseEntity<EtudiantDto> saveEtudiant(@RequestBody @Valid EtudiantDto etudiantDto){
@@ -38,15 +35,10 @@ public class EtudiantController {
         return new ResponseEntity<>(createEtudiantDto, HttpStatus.CREATED);
     }
     @PutMapping("/update/{id}")
-    public ResponseEntity<EtudiantDto> updateEtudiant(@PathVariable Long id, @RequestBody EtudiantDto etudiantDto){
+    public ResponseEntity<EtudiantDto> updateEtudiant(@PathVariable Long id, @RequestBody @Valid EtudiantDto etudiantDto) throws NotFoundException {
         EtudiantDto etudiantDtoUpdate = etudiantService.updateEtudiant(id,etudiantDto);
-        if (etudiantDtoUpdate != null) {
-            return new ResponseEntity<>(etudiantDtoUpdate, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        return new ResponseEntity<>(etudiantDtoUpdate, HttpStatus.OK);
     }
-
     @DeleteMapping("/delete")
     public ResponseEntity<Void> deleteEtudiant(@PathVariable Long id){
         etudiantService.deleteEtudiant(id);

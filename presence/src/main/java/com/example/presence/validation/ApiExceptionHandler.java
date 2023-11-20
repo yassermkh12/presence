@@ -1,5 +1,6 @@
 package com.example.presence.validation;
 
+import com.example.presence.exceptions.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -21,4 +22,12 @@ public class ApiExceptionHandler {
         });
         return errorMap;
     }
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ExceptionHandler(NotFoundException.class)
+    public Map<String,String> handleNotFoundException(NotFoundException e){
+        Map<String,String> errorMap = new HashMap<>();
+        errorMap.put("errorMessage",e.getMessage());
+        return errorMap;
+    }
+
 }
