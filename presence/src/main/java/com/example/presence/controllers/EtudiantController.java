@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/etudiant")
 public class EtudiantController {
     @Autowired
     private IEtudiantService etudiantService;
@@ -23,7 +23,7 @@ public class EtudiantController {
         List<EtudiantDto> etudiantDtos = etudiantService.getAllEtudiant();
         return new ResponseEntity<>(etudiantDtos, HttpStatus.OK);
     }
-    @GetMapping("/{id}")
+    @GetMapping("/by-id/{id}")
     public ResponseEntity<Optional<EtudiantDto>> getEtudiantById(@PathVariable Long id) throws NotFoundException {
         Optional<EtudiantDto> etudiantDto = etudiantService.getEtudiantById(id);
         return new ResponseEntity<>(etudiantDto, HttpStatus.OK);
@@ -38,7 +38,7 @@ public class EtudiantController {
         EtudiantDto etudiantDtoUpdate = etudiantService.updateEtudiant(id,etudiantDto);
         return new ResponseEntity<>(etudiantDtoUpdate, HttpStatus.OK);
     }
-    @DeleteMapping("/delete")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteEtudiant(@PathVariable Long id){
         etudiantService.deleteEtudiant(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

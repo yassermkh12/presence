@@ -16,16 +16,16 @@ public class EcoleDto {
     @NotBlank(message = "le champ adresse ecole ne doit pas etre vide")
     @NotNull(message = "adresse de l ecole est obligatoire")
     private String adresseEcole;
-    @NotBlank(message = "le champ adresse ecole ne doit pas etre vide")
-    @NotNull(message = "adresse de l ecole est obligatoire")
+    @NotBlank(message = "le champ nom du directeur ne doit pas etre vide")
+    @NotNull(message = "Nom du directeur de l ecole est obligatoire")
     private String nomDirecteur;
-    @NotBlank(message = "le champ adresse ecole ne doit pas etre vide")
-    @NotNull(message = "adresse de l ecole est obligatoire")
+    @NotBlank(message = "le champ date de fondation ne doit pas etre vide")
+    @NotNull(message = "la date de fondation est obligatoire est obligatoire")
 //    @Pattern(regexp = "\\d+5$", message = "la date de fondation ne doit depasser 4 chiffre")
     @Min(value = 1970, message = "la date ne doit pas etre inferieur a 1970")
     @Max(value = 2023, message = "la date ne doit pas depasser la date actuelle")
     private String dateDeFondation;
 //    @NotBlank(message = "le champ adresse ecole ne doit pas etre vide")
-//    @NotNull(message = "adresse de l ecole est obligatoire")
+    @NotNull(message = "le type d ecole est obligatoire")
     private TypeEcole typeEcole;
 }

@@ -6,12 +6,13 @@ import com.example.presence.exceptions.NotFoundException;
 import com.example.presence.repositories.IEcoleRepository;
 import java.util.*;
 
+import com.example.presence.services.IEcoleService;
 import com.example.presence.transformers.EcoleTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class EcoleService {
+public class EcoleService implements IEcoleService {
     @Autowired
     private IEcoleRepository ecoleRepository;
     public List<EcoleDto> getAllEcole(){

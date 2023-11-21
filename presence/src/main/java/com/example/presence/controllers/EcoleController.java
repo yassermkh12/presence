@@ -3,6 +3,7 @@ package com.example.presence.controllers;
 import java.util.*;
 import com.example.presence.entitiesDto.EcoleDto;
 import com.example.presence.exceptions.NotFoundException;
+import com.example.presence.services.IEcoleService;
 import com.example.presence.services.impl.EcoleService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/ecole")
 public class EcoleController {
     @Autowired
-    private EcoleService ecoleService;
+    private IEcoleService ecoleService;
     @GetMapping("/all")
     public ResponseEntity<List<EcoleDto>> getAllEcole(){
         List<EcoleDto> ecoleDtos = ecoleService.getAllEcole();
