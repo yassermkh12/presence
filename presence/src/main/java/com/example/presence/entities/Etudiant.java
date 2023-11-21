@@ -33,4 +33,6 @@ public class Etudiant {
 //    @NotNull(message = "le champ Password ne doit pas etre null")
 //    @NotBlank(message = "le Password est obligatoire")
     private String password;
+    @ManyToOne
+    private Ecole ecole;
 }

@@ -15,6 +15,7 @@ public class EtudiantTransformer {
         etudiantDto.setCin(etudiant.getCin());
         etudiantDto.setEmail(etudiant.getEmail());
         etudiantDto.setPassword(etudiant.getPassword());
+        etudiantDto.setEcoleDto(EcoleTransformer.entityToDto(etudiant.getEcole()));
 
         return etudiantDto;
     }
@@ -27,7 +28,7 @@ public class EtudiantTransformer {
         etudiant.setCin(etudiantDto.getCin());
         etudiant.setEmail(etudiantDto.getEmail());
         etudiant.setPassword(etudiantDto.getPassword());
-
+        etudiant.setEcole(EcoleTransformer.dtoToEntity(etudiantDto.getEcoleDto()));
         return etudiant;
     }
 

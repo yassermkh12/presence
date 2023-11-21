@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.util.*;
 
 @Entity
 @Table(name = "ecole")
@@ -21,4 +21,7 @@ public class Ecole {
     private String dateDeFondation;
     @Enumerated(EnumType.STRING)
     private TypeEcole typeEcole;
+    @OneToMany(mappedBy = "ecole", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    @JoinColumn(name = "ecole_id")
+    private List<Etudiant> etudiants;
 }
