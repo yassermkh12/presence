@@ -23,7 +23,7 @@ public class EcoleTransformer {
         ecole.setAdresseEcole(ecoleDto.getAdresseEcole());
         ecole.setNomDirecteur(ecoleDto.getNomDirecteur());
         ecole.setDateDeFondation(ecoleDto.getDateDeFondation());
-        ecole.setTypeEcole(ecole.getTypeEcole());
+        ecole.setTypeEcole(ecoleDto.getTypeEcole());
 
         return ecole;
     }

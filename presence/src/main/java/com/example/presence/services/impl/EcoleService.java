@@ -32,6 +32,21 @@ public class EcoleService {
         ecoleRepository.save(ecole);
         return EcoleTransformer.entityToDto(ecole);
     }
+    public EcoleDto updateEcole(Long id, EcoleDto ecoleDtoUpdate) throws NotFoundException {
+        Optional<Ecole> ecoleOptional = ecoleRepository.findById(id);
+
+        if(ecoleOptional.isPresent()){
+            Ecole ecole = ecoleOptional.get();
+            ecole.setAdresseEcole(ecoleDtoUpdate.getAdresseEcole());
+            ecole.setNomDirecteur(ecoleDtoUpdate.getNomDirecteur());
+            ecole.setDateDeFondation(ecoleDtoUpdate.getDateDeFondation());
+            ecole.setTypeEcole(ecoleDtoUpdate.getTypeEcole());
+
+            ecoleRepository.save(ecole);
+            return EcoleTransformer.entityToDto(ecole);
+        }
+        else throw new NotFoundException("il n y a pas d ecole avec l id : "+ id);
+    }
     public void DeleteById(Long id){
         ecoleRepository.deleteById(id);
     }
