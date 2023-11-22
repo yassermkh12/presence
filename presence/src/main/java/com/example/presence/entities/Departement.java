@@ -18,5 +18,6 @@ public class Departement {
     private String nomDepartement;
     private String chefDepartement;
     private String anneCreation;
+    @Enumerated(EnumType.STRING)
     private StatutDepartement statutDepartement;
 }

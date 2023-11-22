@@ -4,7 +4,6 @@ import java.util.*;
 import com.example.presence.entitiesDto.EcoleDto;
 import com.example.presence.exceptions.NotFoundException;
 import com.example.presence.services.IEcoleService;
-import com.example.presence.services.impl.EcoleService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
