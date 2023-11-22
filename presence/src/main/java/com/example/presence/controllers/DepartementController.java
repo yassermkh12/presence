@@ -3,6 +3,7 @@ package com.example.presence.controllers;
 import com.example.presence.entitiesDto.DepartementDto;
 import com.example.presence.exceptions.NotFoundException;
 import com.example.presence.services.IDepartementService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,12 +27,12 @@ public class DepartementController {
         return new ResponseEntity<>(departementDto, HttpStatus.OK);
     }
     @PostMapping("/save")
-    public ResponseEntity<DepartementDto> saveDepartement(@RequestBody DepartementDto departementDto){
+    public ResponseEntity<DepartementDto> saveDepartement(@RequestBody @Valid DepartementDto departementDto){
         DepartementDto createDepartementDto = departementService.saveDepartement(departementDto);
         return new ResponseEntity<>(departementDto, HttpStatus.CREATED);
     }
     @PutMapping("/update/{id}")
-    public ResponseEntity<DepartementDto> updateDepartement(@PathVariable Long id,@RequestBody DepartementDto departementDto) throws NotFoundException {
+    public ResponseEntity<DepartementDto> updateDepartement(@PathVariable Long id,@RequestBody @Valid DepartementDto departementDto) throws NotFoundException {
         DepartementDto updateDepartementDto = departementService.updateDepartement(id,departementDto);
         return new ResponseEntity<>(departementDto, HttpStatus.OK);
     }
