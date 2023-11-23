@@ -1,13 +1,12 @@
 package com.example.presence.entitiesDto;
 
 import com.example.presence.entities.enums.TypeEcole;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+
+import java.util.*;
 
 @Data
 @NoArgsConstructor
@@ -28,4 +27,5 @@ public class EcoleDto {
 //    @NotBlank(message = "le champ adresse ecole ne doit pas etre vide")
     @NotNull(message = "le type d ecole est obligatoire")
     private TypeEcole typeEcole;
+    private List<DepartementDto> departementDtos;
 }
