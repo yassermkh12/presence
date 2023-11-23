@@ -24,4 +24,11 @@ public class Ecole {
     @OneToMany(mappedBy = "ecole", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 //    @JoinColumn(name = "ecole_id")
     private List<Etudiant> etudiants;
+
+    @ManyToMany
+    @JoinTable(name = "Ecole_departement",
+            joinColumns = @JoinColumn(name = "ecole_id"),
+            inverseJoinColumns = @JoinColumn(name = "departements_id")
+    )
+    private List<Departement> departements;
 }

@@ -1,10 +1,13 @@
 package com.example.presence.services.impl;
 
 import com.example.presence.entities.Departement;
+import com.example.presence.entities.Ecole;
 import com.example.presence.entitiesDto.DepartementDto;
 import com.example.presence.exceptions.NotFoundException;
 import com.example.presence.repositories.IDepartementRepository;
+import com.example.presence.repositories.IEcoleRepository;
 import com.example.presence.services.IDepartementService;
+import com.example.presence.services.IEcoleService;
 import com.example.presence.transformers.DepartementTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,4 +52,5 @@ public class DepartementService implements IDepartementService {
     public void deleteDepartement(Long id){
         departementRepository.deleteById(id);
     }
+
 }
