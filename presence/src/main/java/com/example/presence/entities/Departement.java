@@ -26,4 +26,6 @@ public class Departement {
     @JsonIgnore
     @ManyToMany(mappedBy = "departements", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Ecole> ecoles;
+    @OneToMany(mappedBy = "departement",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Branche> branches;
 }
