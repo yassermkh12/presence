@@ -17,4 +17,5 @@ public class BrancheDto {
     @NotNull(message = "le nom du responsable de la branche est obligatoire")
     @NotBlank(message = "le champ nom du responsable de la branche ne doit pas etre vide")
     private String responsableDeBranche;
+    private DepartementDto departementDto;
 }

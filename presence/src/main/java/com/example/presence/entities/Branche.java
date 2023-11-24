@@ -16,4 +16,7 @@ public class Branche {
     private Long id;
     private String nomBranche;
     private String responsableDeBranche;//Chaque branche peut avoir un responsable administratif ou académique chargé de la superviser.
+    @ManyToOne
+    private Departement departement;
+
 }
