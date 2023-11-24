@@ -4,6 +4,7 @@ import com.example.presence.entitiesDto.BrancheDto;
 import com.example.presence.exceptions.NotFoundException;
 import com.example.presence.services.IBrancheService;
 import com.example.presence.services.impl.BrancheService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -28,12 +29,12 @@ public class BrancheController {
         return new ResponseEntity<>(brancheDto, HttpStatus.OK);
     }
     @PostMapping("/save")
-    public ResponseEntity<BrancheDto> saveBranche(@RequestBody BrancheDto brancheDto){
+    public ResponseEntity<BrancheDto> saveBranche(@RequestBody @Valid BrancheDto brancheDto){
         BrancheDto createBrancheDto = brancheService.saveBranche(brancheDto);
         return new ResponseEntity<>(createBrancheDto, HttpStatus.CREATED);
     }
     @PutMapping("/update/{id}")
-    public ResponseEntity<BrancheDto> updateBranche(@PathVariable Long id, @RequestBody BrancheDto brancheDto) throws NotFoundException {
+    public ResponseEntity<BrancheDto> updateBranche(@PathVariable Long id, @RequestBody @Valid BrancheDto brancheDto) throws NotFoundException {
         BrancheDto updateBrancheDto = brancheService.updateBranche(id,brancheDto);
         return new ResponseEntity<>(updateBrancheDto, HttpStatus.OK);
     }
