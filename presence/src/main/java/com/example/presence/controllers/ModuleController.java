@@ -4,6 +4,7 @@ import com.example.presence.entitiesDto.ModuleDto;
 import com.example.presence.exceptions.NotFoundException;
 import com.example.presence.services.IModuleService;
 import com.example.presence.services.impl.ModuleService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,12 +27,12 @@ public class ModuleController {
         return new ResponseEntity<>(moduleDto,HttpStatus.OK);
     }
     @PostMapping("/save")
-    public ResponseEntity<ModuleDto> saveModule(@RequestBody ModuleDto moduleDto){
+    public ResponseEntity<ModuleDto> saveModule(@RequestBody @Valid ModuleDto moduleDto){
         ModuleDto createModuleDto = moduleService.saveModule(moduleDto);
         return new ResponseEntity<>(createModuleDto,HttpStatus.CREATED);
     }
     @PutMapping("/update/{id}")
-    public ResponseEntity<ModuleDto> updateModule(@PathVariable Long id, @RequestBody ModuleDto moduleDto) throws NotFoundException {
+    public ResponseEntity<ModuleDto> updateModule(@PathVariable Long id, @RequestBody @Valid ModuleDto moduleDto) throws NotFoundException {
         ModuleDto updateModuleDto = moduleService.updateModule(id,moduleDto);
         return new ResponseEntity<>(updateModuleDto,HttpStatus.OK);
     }
