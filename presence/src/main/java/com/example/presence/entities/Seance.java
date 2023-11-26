@@ -19,8 +19,7 @@ public class Seance {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Temporal(TemporalType.DATE)
-    private Date dateSeance;
+    private String dateSeance;
     @Enumerated(EnumType.STRING)
     private TypeSeance typeSeance;
     @OneToOne
