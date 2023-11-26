@@ -11,5 +11,5 @@ public interface IBrancheService {
     public BrancheDto saveBranche(BrancheDto brancheDto);
     public BrancheDto updateBranche(Long id, BrancheDto brancheDtoUpdate) throws NotFoundException;
     public void deleteBranche(Long id);
-
+    public BrancheDto addModuleToBranche(Long brancheId, Long moduleId);
 }

@@ -14,6 +14,8 @@ public class BrancheTransformer {
         brancheDto.setNomBranche(branche.getNomBranche());
         brancheDto.setResponsableDeBranche(branche.getResponsableDeBranche());
         brancheDto.setDepartementDto(DepartementTransformer.entityToDto(branche.getDepartement()));
+        brancheDto.setModuleDtos(ModuleTransformer.entityToDtoList(branche.getModules()));
+
         return brancheDto;
     }
     public static Branche dtoToEntity(BrancheDto brancheDto){

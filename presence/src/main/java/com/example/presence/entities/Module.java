@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.util.*;
 
 @Entity
 @Table(name = "module")
@@ -17,4 +18,6 @@ public class Module {
     private String nomDuModule;
     private String responsableDuModule;// La personne responsable de la conception, de l'enseignement ou de la gestion du module.
     private String dureDuModule;
+    @ManyToMany(mappedBy = "modules", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Branche> branches;
 }
