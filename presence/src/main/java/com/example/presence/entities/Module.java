@@ -20,4 +20,6 @@ public class Module {
     private String dureDuModule;
     @ManyToMany(mappedBy = "modules", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Branche> branches;
+    @OneToOne(mappedBy = "module", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Seance seance;
 }
