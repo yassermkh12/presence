@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.*;
 
 @Entity
 @Table(name = "seance")
@@ -22,4 +23,7 @@ public class Seance {
     private Date dateSeance;
     @Enumerated(EnumType.STRING)
     private TypeSeance typeSeance;
+    @OneToOne
+    @JoinColumn(name = "module_id")
+    private Module module;
 }

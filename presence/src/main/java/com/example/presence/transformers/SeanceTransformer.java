@@ -11,6 +11,7 @@ public class SeanceTransformer {
         seanceDto.setId(seance.getId());
         seanceDto.setDateSeance(seance.getDateSeance());
         seanceDto.setTypeSeance(seance.getTypeSeance());
+        seanceDto.setModuleDto(ModuleTransformer.entityToDto(seance.getModule()));
 
         return seanceDto;
     }
@@ -19,6 +20,7 @@ public class SeanceTransformer {
         seance.setId(seanceDto.getId());
         seance.setDateSeance(seanceDto.getDateSeance());
         seance.setTypeSeance(seanceDto.getTypeSeance());
+        seance.setModule(ModuleTransformer.dtoToEntity(seanceDto.getModuleDto()));
 
         return seance;
     }
