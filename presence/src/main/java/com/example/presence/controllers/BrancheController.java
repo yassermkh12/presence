@@ -1,6 +1,7 @@
 package com.example.presence.controllers;
 
 import com.example.presence.entitiesDto.BrancheDto;
+import com.example.presence.entitiesDto.EcoleDto;
 import com.example.presence.exceptions.NotFoundException;
 import com.example.presence.services.IBrancheService;
 import com.example.presence.services.impl.BrancheService;
@@ -42,5 +43,10 @@ public class BrancheController {
     public ResponseEntity<Void> deleteBranche(@PathVariable Long id){
         brancheService.deleteBranche(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+    @PutMapping("{brancheId}/module/{moduleId}")
+    public ResponseEntity<BrancheDto> addDepartementToEcole(@PathVariable Long brancheId, @PathVariable Long moduleId){
+        BrancheDto brancheDto = brancheService.addModuleToBranche(brancheId,moduleId);
+        return new ResponseEntity<>(brancheDto,HttpStatus.OK);
     }
 }
