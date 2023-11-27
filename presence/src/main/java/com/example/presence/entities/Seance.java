@@ -25,4 +25,6 @@ public class Seance {
     @OneToOne
     @JoinColumn(name = "module_id")
     private Module module;
+    @OneToOne(mappedBy = "seance", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Presences presences;
 }

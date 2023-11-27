@@ -11,6 +11,8 @@ public class PresenceTransformer {
         presenceDto.setId(presence.getId());
         presenceDto.setStatusPresence(presence.getStatusPresence());
         presenceDto.setEstValide(presence.isEstValide());
+        presenceDto.setEtudiantDto(EtudiantTransformer.entityToDto(presence.getEtudiant()));
+        presenceDto.setSeanceDto(SeanceTransformer.entityToDto(presence.getSeance()));
 
         return presenceDto;
     }
@@ -19,6 +21,8 @@ public class PresenceTransformer {
         presence.setId(presenceDto.getId());
         presence.setStatusPresence(presenceDto.getStatusPresence());
         presence.setEstValide(presenceDto.isEstValide());
+        presence.setEtudiant(EtudiantTransformer.dtoToEntity(presenceDto.getEtudiantDto()));
+        presence.setSeance(SeanceTransformer.dtoToEntity(presenceDto.getSeanceDto()));
 
         return presence;
     }

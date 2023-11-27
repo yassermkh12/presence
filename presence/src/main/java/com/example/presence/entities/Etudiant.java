@@ -35,4 +35,6 @@ public class Etudiant {
     private String password;
     @ManyToOne
     private Ecole ecole;
+    @OneToOne(mappedBy = "etudiant", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Presences presences;
 }

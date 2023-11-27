@@ -16,4 +16,6 @@ public class PresenceDto {
     private StatusPresence statusPresence;
     @NotNull(message = "la validation de la presence doit etre non null")
     private boolean estValide;
+    private SeanceDto seanceDto;
+    private EtudiantDto etudiantDto;
 }

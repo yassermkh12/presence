@@ -18,6 +18,11 @@ public class Presences {
     private Long id;
     @Enumerated(EnumType.STRING)
     private StatusPresence statusPresence;
-    @BooleanFlag
     private boolean estValide;
+    @OneToOne
+    @JoinColumn(name = "seance_id")
+    private Seance seance;
+    @OneToOne
+    @JoinColumn(name = "etudiant_id")
+    private Etudiant etudiant;
 }
