@@ -15,6 +15,7 @@ import com.example.presence.transformers.EcoleTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.*;
+import com.example.presence.jms.MessageSender;
 
 @Service
 public class BrancheService implements IBrancheService {
@@ -22,6 +23,8 @@ public class BrancheService implements IBrancheService {
     private IBrancheRepository brancheRepository;
     @Autowired
     private IModuleRepository moduleRepository;
+    @Autowired
+    private MessageSender messageSender;
     public List<BrancheDto> getAllBranche(){
         List<Branche> branches = brancheRepository.findAll();
         return BrancheTransformer.entityToDtoList(branches);

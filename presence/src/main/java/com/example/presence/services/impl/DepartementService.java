@@ -4,6 +4,7 @@ import com.example.presence.entities.Departement;
 import com.example.presence.entities.Ecole;
 import com.example.presence.entitiesDto.DepartementDto;
 import com.example.presence.exceptions.NotFoundException;
+import com.example.presence.jms.MessageSender;
 import com.example.presence.repositories.IDepartementRepository;
 import com.example.presence.repositories.IEcoleRepository;
 import com.example.presence.services.IDepartementService;
@@ -17,6 +18,8 @@ import java.util.*;
 public class DepartementService implements IDepartementService {
     @Autowired
     private IDepartementRepository departementRepository;
+    @Autowired
+    private MessageSender messageSender;
     public List<DepartementDto> getAllDepartement(){
         List<Departement> departements = departementRepository.findAll();
         return DepartementTransformer.entityToDtoList(departements);
@@ -32,6 +35,7 @@ public class DepartementService implements IDepartementService {
     public DepartementDto saveDepartement(DepartementDto departementDto){
         Departement departement = DepartementTransformer.dtoToEntity(departementDto);
         departementRepository.save(departement);
+        messageSender.sendMsg("YM-Queues","la branche est creer : "+ departement.toString());
         return DepartementTransformer.entityToDto(departement);
     }
     public DepartementDto updateDepartement(Long id, DepartementDto departementDtoUpdate) throws NotFoundException {
