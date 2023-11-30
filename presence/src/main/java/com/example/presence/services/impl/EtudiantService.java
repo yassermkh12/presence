@@ -1,10 +1,14 @@
 package com.example.presence.services.impl;
 
+import com.example.presence.entities.Ecole;
 import com.example.presence.entities.Etudiant;
 import com.example.presence.entitiesDto.EtudiantDto;
 import com.example.presence.exceptions.NotFoundException;
+import com.example.presence.repositories.IEcoleRepository;
 import com.example.presence.repositories.IEtudiantRepository;
+import com.example.presence.services.IEcoleService;
 import com.example.presence.services.IEtudiantService;
+import com.example.presence.transformers.EcoleTransformer;
 import com.example.presence.transformers.EtudiantTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +20,8 @@ public class EtudiantService implements IEtudiantService {
     @Autowired
     private IEtudiantRepository etudiantRepository;
 
+    @Autowired
+    private IEcoleRepository ecoleRepository;
     public List<EtudiantDto> getAllEtudiant() throws NotFoundException {
         List<Etudiant> etudiants = etudiantRepository.findAll();
         if (etudiants != null) {
@@ -32,7 +38,7 @@ public class EtudiantService implements IEtudiantService {
             throw new NotFoundException("il n y a pas d etudiant avec id "+ id);
         }
     }
-    public EtudiantDto saveEtudiant(EtudiantDto etudiantDto) {
+    public EtudiantDto saveEtudiant(EtudiantDto etudiantDto){
             Etudiant etudiant = EtudiantTransformer.dtoToEntity(etudiantDto);
             etudiantRepository.save(etudiant);
             return EtudiantTransformer.entityToDto(etudiant);
@@ -47,6 +53,7 @@ public class EtudiantService implements IEtudiantService {
             etudiant.setCin(etudiantDtoUpdate.getCin());
             etudiant.setEmail(etudiantDtoUpdate.getEmail());
             etudiant.setPassword(etudiantDtoUpdate.getPassword());
+            etudiant.setEcole(EcoleTransformer.dtoToEntity(etudiantDtoUpdate.getEcoleDto()));
 
             etudiantRepository.save(etudiant);
             return EtudiantTransformer.entityToDto(etudiant);

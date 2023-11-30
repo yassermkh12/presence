@@ -29,12 +29,19 @@ public class EtudiantTransformer {
         etudiant.setEmail(etudiantDto.getEmail());
         etudiant.setPassword(etudiantDto.getPassword());
         etudiant.setEcole(EcoleTransformer.dtoToEntity(etudiantDto.getEcoleDto()));
+
         return etudiant;
     }
 
     public static List<EtudiantDto> entityToDtoList(List<Etudiant> etudiants){
         return etudiants.stream()
                 .map(EtudiantTransformer::entityToDto)
+                .collect(Collectors.toList());
+    }
+
+    public static List<Etudiant> dtoToEntityList(List<EtudiantDto> etudiantDtos){
+        return etudiantDtos.stream()
+                .map(EtudiantTransformer::dtoToEntity)
                 .collect(Collectors.toList());
     }
 }

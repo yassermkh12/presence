@@ -39,6 +39,6 @@ public class EcoleController {
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteEcoleById(@PathVariable Long id){
         ecoleService.DeleteById(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

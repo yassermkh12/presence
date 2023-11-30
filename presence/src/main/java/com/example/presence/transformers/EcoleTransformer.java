@@ -24,6 +24,7 @@ public class EcoleTransformer {
         ecole.setNomDirecteur(ecoleDto.getNomDirecteur());
         ecole.setDateDeFondation(ecoleDto.getDateDeFondation());
         ecole.setTypeEcole(ecoleDto.getTypeEcole());
+//        ecole.setDepartements(DepartementTransformer.dtoToEntityList(ecoleDto.getDepartementDtos()));
 
         return ecole;
     }
@@ -31,6 +32,12 @@ public class EcoleTransformer {
     public static List<EcoleDto> entityToDtoList(List<Ecole> ecoles){
         return ecoles.stream()
                 .map(EcoleTransformer::entityToDto)
+                .collect(Collectors.toList());
+    }
+
+    public static List<Ecole> dtoToEntityList(List<EcoleDto> ecoleDtos){
+        return ecoleDtos.stream()
+                .map(EcoleTransformer::dtoToEntity)
                 .collect(Collectors.toList());
     }
 }
