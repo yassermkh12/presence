@@ -31,4 +31,9 @@ public class PresenceTransformer {
                 .map(PresenceTransformer::entityToDto)
                 .collect(Collectors.toList());
     }
+    public static List<Presences> dtoToEntityList(List<PresenceDto> presenceDtos){
+        return presenceDtos.stream()
+                .map(PresenceTransformer::dtoToEntity)
+                .collect(Collectors.toList());
+    }
 }

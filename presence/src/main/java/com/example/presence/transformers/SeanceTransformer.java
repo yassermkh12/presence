@@ -29,5 +29,10 @@ public class SeanceTransformer {
                 .map(SeanceTransformer::entityToDto)
                 .collect(Collectors.toList());
     }
+    public static List<Seance> dtoToEntityList(List<SeanceDto> seanceDtos){
+        return seanceDtos.stream()
+                .map(SeanceTransformer::dtoToEntity)
+                .collect(Collectors.toList());
+    }
 
 }

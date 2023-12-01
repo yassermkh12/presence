@@ -33,4 +33,9 @@ public class BrancheTransformer {
                 .map(BrancheTransformer::entityToDto)
                 .collect(Collectors.toList());
     }
+    public static List<Branche> dtoToEntityList(List<BrancheDto> brancheDtos){
+        return brancheDtos.stream()
+                .map(BrancheTransformer::dtoToEntity)
+                .collect(Collectors.toList());
+    }
 }

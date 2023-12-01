@@ -34,4 +34,9 @@ public class DepartementTransformer {
                 .map(DepartementTransformer::entityToDto)
                 .collect(Collectors.toList());
     }
+    public static List<Departement> dtoToEntityList(List<DepartementDto> departementDtos){
+        return departementDtos.stream()
+                .map(DepartementTransformer::dtoToEntity)
+                .collect(Collectors.toList());
+    }
 }

@@ -37,4 +37,9 @@ public class EtudiantTransformer {
                 .map(EtudiantTransformer::entityToDto)
                 .collect(Collectors.toList());
     }
+    public static List<Etudiant> dtoToEntityList(List<EtudiantDto> etudiantDtos){
+        return etudiantDtos.stream()
+                .map(EtudiantTransformer::dtoToEntity)
+                .collect(Collectors.toList());
+    }
 }

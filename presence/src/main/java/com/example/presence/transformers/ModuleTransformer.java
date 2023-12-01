@@ -29,4 +29,9 @@ public class ModuleTransformer {
                 .map(ModuleTransformer::entityToDto)
                 .collect(Collectors.toList());
     }
+    public static List<Module> dtoToEntityList(List<ModuleDto> moduleDtos){
+        return moduleDtos.stream()
+                .map(ModuleTransformer::dtoToEntity)
+                .collect(Collectors.toList());
+    }
 }
