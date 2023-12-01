@@ -27,5 +27,5 @@ public class EcoleDto {
 //    @NotBlank(message = "le champ adresse ecole ne doit pas etre vide")
     @NotNull(message = "le type d ecole est obligatoire")
     private TypeEcole typeEcole;
-    private List<DepartementDto> departementDtos;
+//    private List<DepartementDto> departementDtos;
 }

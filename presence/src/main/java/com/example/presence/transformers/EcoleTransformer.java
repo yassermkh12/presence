@@ -13,7 +13,7 @@ public class EcoleTransformer {
         ecoleDto.setNomDirecteur(ecole.getNomDirecteur());
         ecoleDto.setDateDeFondation(ecole.getDateDeFondation());
         ecoleDto.setTypeEcole(ecole.getTypeEcole());
-        ecoleDto.setDepartementDtos(DepartementTransformer.entityToDtoList(ecole.getDepartements()));
+//        ecoleDto.setDepartementDtos(DepartementTransformer.entityToDtoList(ecole.getDepartements()));
 
         return ecoleDto;
     }
