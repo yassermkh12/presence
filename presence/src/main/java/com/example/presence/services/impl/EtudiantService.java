@@ -59,4 +59,9 @@ public class EtudiantService implements IEtudiantService {
     public void deleteEtudiant(Long id){
         etudiantRepository.deleteById(id);
     }
+    public List<EtudiantDto> saveAllEtudiant(List<EtudiantDto> etudiantDtos){
+        List<Etudiant> etudiants = EtudiantTransformer.dtoToEntityList(etudiantDtos);
+        etudiantRepository.saveAll(etudiants);
+        return EtudiantTransformer.entityToDtoList(etudiants);
+    }
 }

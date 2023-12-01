@@ -12,4 +12,5 @@ public interface IEtudiantService {
     public EtudiantDto saveEtudiant(EtudiantDto etudiantDto);
     public EtudiantDto updateEtudiant(Long id, EtudiantDto etudiantDtoUpdate) throws NotFoundException;
     public void deleteEtudiant(Long id);
+    public List<EtudiantDto> saveAllEtudiant(List<EtudiantDto> etudiantDtos);
 }

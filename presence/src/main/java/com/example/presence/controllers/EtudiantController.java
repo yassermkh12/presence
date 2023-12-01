@@ -33,6 +33,11 @@ public class EtudiantController {
         EtudiantDto createEtudiantDto = etudiantService.saveEtudiant(etudiantDto);
         return new ResponseEntity<>(createEtudiantDto, HttpStatus.CREATED);
     }
+    @PostMapping("/saveAll")
+    public ResponseEntity<List<EtudiantDto>> saveAllEtudiant(@RequestBody @Valid List<EtudiantDto> etudiantDtos){
+        List<EtudiantDto> createEtudiantDtos = etudiantService.saveAllEtudiant(etudiantDtos);
+        return new ResponseEntity<>(createEtudiantDtos,HttpStatus.CREATED);
+    }
     @PutMapping("/update/{id}")
     public ResponseEntity<EtudiantDto> updateEtudiant(@PathVariable Long id, @RequestBody @Valid EtudiantDto etudiantDto) throws NotFoundException {
         EtudiantDto etudiantDtoUpdate = etudiantService.updateEtudiant(id,etudiantDto);
