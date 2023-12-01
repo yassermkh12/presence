@@ -6,6 +6,7 @@ import com.example.presence.entities.Ecole;
 import com.example.presence.entitiesDto.EcoleDto;
 import com.example.presence.exceptions.NotFoundException;
 import com.example.presence.services.IEcoleService;
+import com.example.presence.services.impl.EcoleService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/ecole")
 public class EcoleController {
     @Autowired
-    private IEcoleService ecoleService;
+    private EcoleService ecoleService;
 
     @GetMapping("/all")
     public ResponseEntity<List<EcoleDto>> getAllEcole(){
@@ -47,5 +48,10 @@ public class EcoleController {
     public ResponseEntity<EcoleDto> addDepartementToEcole(@PathVariable Long ecoleId, @PathVariable Long departementId){
         EcoleDto ecoleDto = ecoleService.addDepartementToEcole(ecoleId, departementId);
         return new ResponseEntity<>(ecoleDto,HttpStatus.OK);
+    }
+    @PostMapping("/saveAll")
+    public ResponseEntity<List<EcoleDto>> saveAllEcole(@RequestBody List<EcoleDto> ecoleDtos){
+        List<EcoleDto> ecoleDtos1 = ecoleService.saveAllEcole(ecoleDtos);
+        return new ResponseEntity<>(ecoleDtos1,HttpStatus.OK);
     }
 }

@@ -69,4 +69,10 @@ public class EcoleService implements IEcoleService {
 
         return EcoleTransformer.entityToDto(ecole);
     }
+
+    public List<EcoleDto> saveAllEcole(List<EcoleDto> ecoleDtos){
+        List<Ecole> ecoles = EcoleTransformer.dtoToEntityList(ecoleDtos);
+        ecoleRepository.saveAll(ecoles);
+        return EcoleTransformer.entityToDtoList(ecoles);
+    }
 }
