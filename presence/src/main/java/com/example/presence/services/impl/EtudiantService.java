@@ -5,6 +5,7 @@ import com.example.presence.entitiesDto.EtudiantDto;
 import com.example.presence.exceptions.NotFoundException;
 import com.example.presence.repositories.IEtudiantRepository;
 import com.example.presence.services.IEtudiantService;
+import com.example.presence.transformers.EcoleTransformer;
 import com.example.presence.transformers.EtudiantTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,6 +48,7 @@ public class EtudiantService implements IEtudiantService {
             etudiant.setCin(etudiantDtoUpdate.getCin());
             etudiant.setEmail(etudiantDtoUpdate.getEmail());
             etudiant.setPassword(etudiantDtoUpdate.getPassword());
+            etudiant.setEcole(EcoleTransformer.dtoToEntity(etudiantDtoUpdate.getEcoleDto()));
 
             etudiantRepository.save(etudiant);
             return EtudiantTransformer.entityToDto(etudiant);
