@@ -10,10 +10,11 @@ public class EcoleTransformer {
         EcoleDto ecoleDto = new EcoleDto();
         ecoleDto.setId(ecole.getId());
         ecoleDto.setAdresseEcole(ecole.getAdresseEcole());
-        ecoleDto.setNomDirecteur(ecole.getNomDirecteur());
+//        ecoleDto.setNomDirecteur(ecole.getNomDirecteur());
         ecoleDto.setDateDeFondation(ecole.getDateDeFondation());
         ecoleDto.setTypeEcole(ecole.getTypeEcole());
 //        ecoleDto.setDepartementDtos(DepartementTransformer.entityToDtoList(ecole.getDepartements()));
+        ecoleDto.setDirecteurEcole(EmployeTransformer.entityToDto(ecole.getDirecteurEcole()));
 
         return ecoleDto;
     }
@@ -22,9 +23,10 @@ public class EcoleTransformer {
         Ecole ecole = new Ecole();
         ecole.setId(ecoleDto.getId());
         ecole.setAdresseEcole(ecoleDto.getAdresseEcole());
-        ecole.setNomDirecteur(ecoleDto.getNomDirecteur());
+//        ecole.setNomDirecteur(ecoleDto.getNomDirecteur());
         ecole.setDateDeFondation(ecoleDto.getDateDeFondation());
         ecole.setTypeEcole(ecoleDto.getTypeEcole());
+        ecole.setDirecteurEcole(EmployeTransformer.dtoToEntity(ecoleDto.getDirecteurEcole()));
 
         return ecole;
     }

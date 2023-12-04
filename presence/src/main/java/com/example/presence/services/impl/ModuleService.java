@@ -5,6 +5,7 @@ import com.example.presence.entitiesDto.ModuleDto;
 import com.example.presence.exceptions.NotFoundException;
 import com.example.presence.repositories.IModuleRepository;
 import com.example.presence.services.IModuleService;
+import com.example.presence.transformers.EmployeTransformer;
 import com.example.presence.transformers.ModuleTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,7 +37,7 @@ public class ModuleService implements IModuleService {
 
         if (module != null){
             module.setNomDuModule(moduleDto.getNomDuModule());
-            module.setResponsableDuModule(moduleDto.getResponsableDuModule());
+            module.setResponsableDuModule(EmployeTransformer.dtoToEntity(moduleDto.getResponsableDuModule()));
             module.setDureDuModule(moduleDto.getDureDuModule());
 
             moduleRepository.save(module);

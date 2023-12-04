@@ -19,4 +19,12 @@ public class Employe {
     private String numeroTelephone;
     private String email;
     private String poste;
+    @OneToOne(mappedBy = "directeurEcole", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Ecole ecole;
+    @OneToOne(mappedBy = "chefDepartement", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Departement departement;
+    @OneToOne(mappedBy = "responsableDeBranche", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Branche branche;
+    @OneToOne(mappedBy = "responsableDuModule", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Module module;
 }

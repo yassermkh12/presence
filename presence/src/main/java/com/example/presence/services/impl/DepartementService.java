@@ -9,6 +9,7 @@ import com.example.presence.repositories.IEcoleRepository;
 import com.example.presence.services.IDepartementService;
 import com.example.presence.services.IEcoleService;
 import com.example.presence.transformers.DepartementTransformer;
+import com.example.presence.transformers.EmployeTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.*;
@@ -38,7 +39,7 @@ public class DepartementService implements IDepartementService {
         Departement departementUpdate = departementRepository.findById(id).orElse(null);
 
         if(departementUpdate!=null) {
-            departementUpdate.setChefDepartement(departementDtoUpdate.getChefDepartement());
+            departementUpdate.setChefDepartement(EmployeTransformer.dtoToEntity(departementDtoUpdate.getChefDepartement()));
             departementUpdate.setNomDepartement(departementDtoUpdate.getNomDepartement());
             departementUpdate.setStatutDepartement(departementDtoUpdate.getStatutDepartement());
             departementUpdate.setAnneCreation(departementDtoUpdate.getAnneCreation());

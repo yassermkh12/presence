@@ -17,7 +17,7 @@ public class Ecole {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String adresseEcole;
-    private String nomDirecteur;
+//    private String nomDirecteur;
     private String dateDeFondation;
     @Enumerated(EnumType.STRING)
     private TypeEcole typeEcole;
@@ -31,4 +31,7 @@ public class Ecole {
             inverseJoinColumns = @JoinColumn(name = "departements_id")
     )
     private List<Departement> departements;
+    @OneToOne
+    @JoinColumn(name = "directeur_id")
+    private Employe directeurEcole;
 }

@@ -12,6 +12,7 @@ import com.example.presence.repositories.IModuleRepository;
 import com.example.presence.services.IBrancheService;
 import com.example.presence.transformers.BrancheTransformer;
 import com.example.presence.transformers.EcoleTransformer;
+import com.example.presence.transformers.EmployeTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.*;
@@ -43,7 +44,7 @@ public class BrancheService implements IBrancheService {
         Branche branche = brancheRepository.findById(id).orElse(null);
         if(branche != null){
             branche.setNomBranche(brancheDtoUpdate.getNomBranche());
-            branche.setResponsableDeBranche(brancheDtoUpdate.getResponsableDeBranche());
+            branche.setResponsableDeBranche(EmployeTransformer.dtoToEntity(brancheDtoUpdate.getResponsableDeBranche()));
 
             brancheRepository.save(branche);
             return BrancheTransformer.entityToDto(branche);

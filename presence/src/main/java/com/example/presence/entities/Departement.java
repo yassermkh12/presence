@@ -18,7 +18,7 @@ public class Departement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nomDepartement;
-    private String chefDepartement;
+//    private String chefDepartement;
     private String anneCreation;
     @Enumerated(EnumType.STRING)
     private StatutDepartement statutDepartement;
@@ -28,4 +28,7 @@ public class Departement {
     private List<Ecole> ecoles;
     @OneToMany(mappedBy = "departement",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Branche> branches;
+    @OneToOne
+    @JoinColumn(name = "chef_de_departement")
+    private Employe chefDepartement;
 }
