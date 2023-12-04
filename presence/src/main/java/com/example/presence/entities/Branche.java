@@ -16,7 +16,7 @@ public class Branche {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nomBranche;
-    private String responsableDeBranche;//Chaque branche peut avoir un responsable administratif ou académique chargé de la superviser.
+//    private String responsableDeBranche;//Chaque branche peut avoir un responsable administratif ou académique chargé de la superviser.
     @ManyToOne
     private Departement departement;
 
@@ -26,4 +26,8 @@ public class Branche {
             inverseJoinColumns = @JoinColumn(name = "module_id")
     )
     private List<Module> modules;
+
+    @OneToOne
+    @JoinColumn(name = "responsable_de_branche")
+    private Employe responsableDeBranche;
 }

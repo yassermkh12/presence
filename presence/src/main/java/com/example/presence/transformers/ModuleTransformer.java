@@ -11,7 +11,7 @@ public class ModuleTransformer {
         moduleDto.setId(module.getId());
         moduleDto.setNomDuModule(module.getNomDuModule());
         moduleDto.setDureDuModule(module.getDureDuModule());
-        moduleDto.setResponsableDuModule(module.getResponsableDuModule());
+        moduleDto.setResponsableDuModule(EmployeTransformer.entityToDto(module.getResponsableDuModule()));
 
         return moduleDto;
     }
@@ -20,7 +20,7 @@ public class ModuleTransformer {
         module.setId(moduleDto.getId());
         module.setDureDuModule(moduleDto.getDureDuModule());
         module.setNomDuModule(moduleDto.getNomDuModule());
-        module.setResponsableDuModule(moduleDto.getResponsableDuModule());
+        module.setResponsableDuModule(EmployeTransformer.dtoToEntity(moduleDto.getResponsableDuModule()));
 
         return module;
     }

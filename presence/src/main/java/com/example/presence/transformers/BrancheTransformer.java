@@ -12,7 +12,7 @@ public class BrancheTransformer {
         BrancheDto brancheDto = new BrancheDto();
         brancheDto.setId(branche.getId());
         brancheDto.setNomBranche(branche.getNomBranche());
-        brancheDto.setResponsableDeBranche(branche.getResponsableDeBranche());
+        brancheDto.setResponsableDeBranche(EmployeTransformer.entityToDto(branche.getResponsableDeBranche()));
         brancheDto.setDepartementDto(DepartementTransformer.entityToDto(branche.getDepartement()));
         brancheDto.setModuleDtos(ModuleTransformer.entityToDtoList(branche.getModules()));
 
@@ -22,7 +22,7 @@ public class BrancheTransformer {
         Branche branche = new Branche();
         branche.setId(brancheDto.getId());
         branche.setNomBranche(brancheDto.getNomBranche());
-        branche.setResponsableDeBranche(brancheDto.getResponsableDeBranche());
+        branche.setResponsableDeBranche(EmployeTransformer.dtoToEntity(brancheDto.getResponsableDeBranche()));
         branche.setDepartement(DepartementTransformer.dtoToEntity(brancheDto.getDepartementDto()));
 
         return branche;

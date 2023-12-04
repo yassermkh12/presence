@@ -10,6 +10,7 @@ import java.util.*;
 
 import com.example.presence.services.IEcoleService;
 import com.example.presence.transformers.EcoleTransformer;
+import com.example.presence.transformers.EmployeTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,9 +44,10 @@ public class EcoleService implements IEcoleService {
         if(ecoleOptional.isPresent()){
             Ecole ecole = ecoleOptional.get();
             ecole.setAdresseEcole(ecoleDtoUpdate.getAdresseEcole());
-            ecole.setNomDirecteur(ecoleDtoUpdate.getNomDirecteur());
+//            ecole.setNomDirecteur(ecoleDtoUpdate.getNomDirecteur());
             ecole.setDateDeFondation(ecoleDtoUpdate.getDateDeFondation());
             ecole.setTypeEcole(ecoleDtoUpdate.getTypeEcole());
+            ecole.setDirecteurEcole(EmployeTransformer.dtoToEntity(ecoleDtoUpdate.getDirecteurEcole()));
 
             ecoleRepository.save(ecole);
             return EcoleTransformer.entityToDto(ecole);
