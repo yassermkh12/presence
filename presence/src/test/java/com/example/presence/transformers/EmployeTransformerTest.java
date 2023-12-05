@@ -92,4 +92,44 @@ public class EmployeTransformerTest {
             assertEquals(employe.getEmail(),employeDto.getEmail());
         }
     }
+    @Test
+    public void testDtoToEntityList() {
+        EmployeDto employeDto1 = new EmployeDto();
+
+        employeDto1.setId(1L);
+        employeDto1.setPoste("pes");
+        employeDto1.setNom("mokhtari");
+        employeDto1.setPrenom("yassir");
+        employeDto1.setEmail("yassir@gmail.com");
+        employeDto1.setNumeroTelephone("0654421314");
+
+        EmployeDto employeDto2 = new EmployeDto();
+
+        employeDto2.setId(1L);
+        employeDto2.setPoste("pes");
+        employeDto2.setNom("mokhtari");
+        employeDto2.setPrenom("yassir");
+        employeDto2.setEmail("yassir@gmail.com");
+        employeDto2.setNumeroTelephone("0654421314");
+
+        List<EmployeDto> employeDtos = Arrays.asList(
+                employeDto1, employeDto2
+        );
+
+        List<Employe> employes = EmployeTransformer.dtoToEntityList(employeDtos);
+
+        assertEquals(employes.size(), employeDtos.size());
+
+        for (int i = 0; i < employes.size(); i++) {
+            Employe employe = employes.get(i);
+            EmployeDto employeDto = employeDtos.get(i);
+
+            assertEquals(employe.getId(), employeDto.getId());
+            assertEquals(employe.getNom(), employeDto.getNom());
+            assertEquals(employe.getPrenom(), employeDto.getPrenom());
+            assertEquals(employe.getPoste(), employeDto.getPoste());
+            assertEquals(employe.getNumeroTelephone(), employeDto.getNumeroTelephone());
+            assertEquals(employe.getEmail(), employeDto.getEmail());
+        }
+    }
 }
