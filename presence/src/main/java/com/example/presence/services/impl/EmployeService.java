@@ -7,11 +7,13 @@ import com.example.presence.repositories.IEmployeRepository;
 import com.example.presence.services.IEmployeService;
 import com.example.presence.transformers.EmployeTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import java.util.*;
+import java.util.concurrent.CompletableFuture;
 
 @Service
-public class EmployeService implements IEmployeService {
+public class EmployeService {
     @Autowired
     private IEmployeRepository employeRepository;
 
@@ -53,5 +55,21 @@ public class EmployeService implements IEmployeService {
     }
     public void deleteEmploye(Long id){
         employeRepository.deleteById(id);
+    }
+
+    @Async
+    public CompletableFuture<List<EmployeDto>> getAllEmployeAs(){
+        List<Employe> employes = employeRepository.findAll();
+        List<EmployeDto> employeDtos = EmployeTransformer.entityToDtoList(employes);
+        return CompletableFuture.completedFuture(employeDtos);
+    }
+    @Async
+    public CompletableFuture<EmployeDto> getByIdEmployeAs(Long id) throws NotFoundException {
+        Employe employe = employeRepository.findById(id).orElse(null);
+        if(employe != null){
+            return CompletableFuture.completedFuture(EmployeTransformer.entityToDto(employe));
+        }else {
+            throw new NotFoundException("il n y a pas d employe avec id "+ id + " (async)");
+        }
     }
 }

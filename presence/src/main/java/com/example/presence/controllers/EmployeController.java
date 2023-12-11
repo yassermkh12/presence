@@ -11,12 +11,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 @RestController
 @RequestMapping("/api/employe")
 public class EmployeController {
     @Autowired
-    private IEmployeService employeService;
+    private EmployeService employeService;
     @GetMapping("/all")
     public ResponseEntity<List<EmployeDto>> getAllEmploye(){
         List<EmployeDto> employeDtos = employeService.getAllEmploye();
@@ -47,4 +49,21 @@ public class EmployeController {
         employeService.deleteEmploye(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @GetMapping("/async/all")
+    public ResponseEntity<CompletableFuture<List<EmployeDto>>> getAllEmployeAsy() {
+//        return employeService.getAllEmployeAs()
+//                .thenApply(employeDtos -> new ResponseEntity<>(employeDtos, HttpStatus.OK));
+        CompletableFuture<List<EmployeDto>> employeDto = employeService.getAllEmployeAs();
+        return new ResponseEntity<>(employeDto,HttpStatus.OK);
+    }
+    @GetMapping("/async/by-id/{id}")
+    public ResponseEntity<EmployeDto> getByIdEmployeAs(@PathVariable Long id) throws NotFoundException, ExecutionException, InterruptedException {
+//        return employeService.getByIdEmployeAs(id)
+//                .thenApply(employeDto -> new ResponseEntity<>(employeDto,HttpStatus.OK));
+        CompletableFuture<EmployeDto> employeDto = employeService.getByIdEmployeAs(id);
+        EmployeDto employeDto1 = employeDto.get();
+        return new ResponseEntity<>(employeDto1,HttpStatus.OK);
+    }
+
 }
