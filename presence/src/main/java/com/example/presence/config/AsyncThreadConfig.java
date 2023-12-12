@@ -14,7 +14,7 @@ import java.util.concurrent.Executor;
 public class AsyncThreadConfig {
 //    private int corePoolSize = 5;
 //    private int maxPoolSize = 10;
-    @Bean(name = "async")
+    @Bean(name = "otcServiceAsyncTaskExecutor")
     public Executor asyncTaskExecutor(){
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
 
