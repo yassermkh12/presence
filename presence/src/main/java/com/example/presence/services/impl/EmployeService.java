@@ -18,7 +18,6 @@ public class EmployeService implements IEmployeService {
 
     public List<EmployeDto> getAllEmploye(){
         List<Employe> employes = employeRepository.findAll();
-        log.info("employes sont : " + employes);
         return EmployeTransformer.entityToDtoList(employes);
     }
     public EmployeDto getEmployeById(Long id) throws NotFoundException {
