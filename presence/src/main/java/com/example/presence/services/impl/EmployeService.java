@@ -6,10 +6,11 @@ import com.example.presence.exceptions.NotFoundException;
 import com.example.presence.repositories.IEmployeRepository;
 import com.example.presence.services.IEmployeService;
 import com.example.presence.transformers.EmployeTransformer;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.*;
-
+@Slf4j
 @Service
 public class EmployeService implements IEmployeService {
     @Autowired
@@ -17,6 +18,7 @@ public class EmployeService implements IEmployeService {
 
     public List<EmployeDto> getAllEmploye(){
         List<Employe> employes = employeRepository.findAll();
+        log.info("employes sont : " + employes);
         return EmployeTransformer.entityToDtoList(employes);
     }
     public EmployeDto getEmployeById(Long id) throws NotFoundException {
