@@ -78,6 +78,7 @@ public class EmployeService {
     public CompletableFuture<EmployeDto> getByIdEmployeAs(Long id) throws NotFoundException {
         Employe employe = employeRepository.findById(id).orElse(null);
         if(employe != null){
+            log.info("le thread qui fonctionne est : "+ Thread.currentThread().getName());
             return CompletableFuture.completedFuture(EmployeTransformer.entityToDto(employe));
         }else {
             throw new NotFoundException("il n y a pas d employe avec id "+ id + " (async)");
