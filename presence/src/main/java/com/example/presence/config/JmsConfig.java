@@ -12,7 +12,7 @@ import org.springframework.jms.core.JmsTemplate;
 @Configuration
 @EnableJms
 public class JmsConfig {
-    private String brokerUrl = "tcp://176.31.162.217:61616";
+    private String brokerUrl = "tcp://localhost:61616";
 
     @Bean
     public ConnectionFactory connectionFactory() {
