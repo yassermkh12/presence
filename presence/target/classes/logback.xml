@@ -15,7 +15,7 @@
 
     <!-- Configuration de l'appender fichier -->
     <appender name="File" class="ch.qos.logback.core.FileAppender">
-        <file>app.log</file>
+        <file>presence.log</file>
         <encoder>
             <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
