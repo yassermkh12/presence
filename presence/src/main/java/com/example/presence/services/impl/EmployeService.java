@@ -47,6 +47,8 @@ public class EmployeService implements IEmployeService {
             employe.setEmail(employeDto.getEmail());
             employe.setNumeroTelephone(employeDto.getNumeroTelephone());
 
+            employeRepository.save(employe);
+
             return EmployeTransformer.entityToDto(employe);
         }else {
             throw new NotFoundException("il n y a pas d employe avec id "+ id);
