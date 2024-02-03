@@ -18,6 +18,7 @@ public class Ecole {
     private Long id;
     private String adresseEcole;
 //    private String nomDirecteur;
+    private String nomEcole;
     private String dateDeFondation;
     @Enumerated(EnumType.STRING)
     private TypeEcole typeEcole;

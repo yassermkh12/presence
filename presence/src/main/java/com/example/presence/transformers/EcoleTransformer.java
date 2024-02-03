@@ -9,6 +9,7 @@ public class EcoleTransformer {
     public static EcoleDto entityToDto(Ecole ecole){
         EcoleDto ecoleDto = new EcoleDto();
         ecoleDto.setId(ecole.getId());
+        ecoleDto.setNomEcole(ecole.getNomEcole());
         ecoleDto.setAdresseEcole(ecole.getAdresseEcole());
 //        ecoleDto.setNomDirecteur(ecole.getNomDirecteur());
         ecoleDto.setDateDeFondation(ecole.getDateDeFondation());
@@ -22,6 +23,7 @@ public class EcoleTransformer {
     public static Ecole dtoToEntity(EcoleDto ecoleDto){
         Ecole ecole = new Ecole();
         ecole.setId(ecoleDto.getId());
+        ecole.setNomEcole(ecoleDto.getNomEcole());
         ecole.setAdresseEcole(ecoleDto.getAdresseEcole());
 //        ecole.setNomDirecteur(ecoleDto.getNomDirecteur());
         ecole.setDateDeFondation(ecoleDto.getDateDeFondation());
