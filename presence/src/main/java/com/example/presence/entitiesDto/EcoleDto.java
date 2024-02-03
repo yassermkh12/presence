@@ -15,6 +15,9 @@ public class EcoleDto {
     @NotBlank(message = "le champ adresse ecole ne doit pas etre vide")
     @NotNull(message = "adresse de l ecole est obligatoire")
     private String adresseEcole;
+    @NotBlank(message = "le champ nom ecole ne doit pas etre vide")
+    @NotNull(message = "nom de l ecole est obligatoire")
+    private String nomEcole;
 //    @NotBlank(message = "le champ nom du directeur ne doit pas etre vide")
 //    @NotNull(message = "Nom du directeur de l ecole est obligatoire")
 //    private String nomDirecteur;
