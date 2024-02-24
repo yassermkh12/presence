@@ -23,9 +23,11 @@ public class Departement {
     @Enumerated(EnumType.STRING)
     private StatutDepartement statutDepartement;
 
-    @JsonIgnore
-    @ManyToMany(mappedBy = "departements", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Ecole> ecoles;
+//    @JsonIgnore
+//    @ManyToMany(mappedBy = "departements", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    private List<Ecole> ecoles;
+    @ManyToOne
+    private Ecole ecole;
     @OneToMany(mappedBy = "departement",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Branche> branches;
     @OneToOne

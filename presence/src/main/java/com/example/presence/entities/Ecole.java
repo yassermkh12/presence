@@ -26,12 +26,15 @@ public class Ecole {
 //    @JoinColumn(name = "ecole_id")
     private List<Etudiant> etudiants;
 
-    @ManyToMany
-    @JoinTable(name = "Ecole_departement",
-            joinColumns = @JoinColumn(name = "ecole_id"),
-            inverseJoinColumns = @JoinColumn(name = "departements_id")
-    )
+//    @ManyToMany
+//    @JoinTable(name = "Ecole_departement",
+//            joinColumns = @JoinColumn(name = "ecole_id"),
+//            inverseJoinColumns = @JoinColumn(name = "departements_id")
+//    )
+//    private List<Departement> departements;
+    @OneToMany(mappedBy = "ecole",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Departement> departements;
+
     @OneToOne
     @JoinColumn(name = "directeur_id")
     private Employe directeurEcole;

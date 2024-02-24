@@ -9,7 +9,9 @@ import com.example.presence.repositories.IEcoleRepository;
 import com.example.presence.services.IDepartementService;
 import com.example.presence.services.IEcoleService;
 import com.example.presence.transformers.DepartementTransformer;
+import com.example.presence.transformers.EcoleTransformer;
 import com.example.presence.transformers.EmployeTransformer;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.*;
@@ -43,6 +45,7 @@ public class DepartementService implements IDepartementService {
             departementUpdate.setNomDepartement(departementDtoUpdate.getNomDepartement());
             departementUpdate.setStatutDepartement(departementDtoUpdate.getStatutDepartement());
             departementUpdate.setAnneCreation(departementDtoUpdate.getAnneCreation());
+            departementUpdate.setEcole(EcoleTransformer.dtoToEntity(departementDtoUpdate.getEcoleDto()));
 
             departementRepository.save(departementUpdate);
             return DepartementTransformer.entityToDto(departementUpdate);

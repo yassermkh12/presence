@@ -44,11 +44,11 @@ public class EcoleController {
         ecoleService.DeleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-    @PutMapping("{ecoleId}/departement/{departementId}")
-    public ResponseEntity<EcoleDto> addDepartementToEcole(@PathVariable Long ecoleId, @PathVariable Long departementId){
-        EcoleDto ecoleDto = ecoleService.addDepartementToEcole(ecoleId, departementId);
-        return new ResponseEntity<>(ecoleDto,HttpStatus.OK);
-    }
+//    @PutMapping("{ecoleId}/departement/{departementId}")
+//    public ResponseEntity<EcoleDto> addDepartementToEcole(@PathVariable Long ecoleId, @PathVariable Long departementId){
+//        EcoleDto ecoleDto = ecoleService.addDepartementToEcole(ecoleId, departementId);
+//        return new ResponseEntity<>(ecoleDto,HttpStatus.OK);
+//    }
     @PostMapping("/saveAll")
     public ResponseEntity<List<EcoleDto>> saveAllEcole(@RequestBody List<EcoleDto> ecoleDtos){
         List<EcoleDto> ecoleDtos1 = ecoleService.saveAllEcole(ecoleDtos);

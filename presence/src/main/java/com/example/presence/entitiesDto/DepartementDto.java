@@ -28,4 +28,5 @@ public class DepartementDto {
     @NotNull(message = "le statut du departement est obligatoire")
     private StatutDepartement statutDepartement;
     private EmployeDto chefDepartement;
+    private EcoleDto ecoleDto;
 }

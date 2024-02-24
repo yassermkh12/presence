@@ -58,19 +58,19 @@ public class EcoleService implements IEcoleService {
         ecoleRepository.deleteById(id);
     }
 
-    public EcoleDto addDepartementToEcole(Long ecoleId,Long departementId){
-        Ecole ecole = ecoleRepository.findById(ecoleId).get();
-        Departement departement = departementRepository.findById(departementId).get();
-
-        List<Departement> departementSet = null;
-        departementSet = ecole.getDepartements();
-        departementSet.add(departement);
-        ecole.setDepartements(departementSet);
-
-        ecoleRepository.save(ecole);
-
-        return EcoleTransformer.entityToDto(ecole);
-    }
+//    public EcoleDto addDepartementToEcole(Long ecoleId,Long departementId){
+//        Ecole ecole = ecoleRepository.findById(ecoleId).get();
+//        Departement departement = departementRepository.findById(departementId).get();
+//
+//        List<Departement> departementSet = null;
+//        departementSet = ecole.getDepartements();
+//        departementSet.add(departement);
+//        ecole.setDepartements(departementSet);
+//
+//        ecoleRepository.save(ecole);
+//
+//        return EcoleTransformer.entityToDto(ecole);
+//    }
 
     public List<EcoleDto> saveAllEcole(List<EcoleDto> ecoleDtos){
         List<Ecole> ecoles = EcoleTransformer.dtoToEntityList(ecoleDtos);

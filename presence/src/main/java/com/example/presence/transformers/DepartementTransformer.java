@@ -17,6 +17,7 @@ public class DepartementTransformer {
         departementDto.setAnneCreation(departement.getAnneCreation());
         departementDto.setStatutDepartement(departement.getStatutDepartement());
         departementDto.setChefDepartement(EmployeTransformer.entityToDto(departement.getChefDepartement()));
+        departementDto.setEcoleDto(EcoleTransformer.entityToDto(departement.getEcole()));
 
         return departementDto;
     }
@@ -28,6 +29,7 @@ public class DepartementTransformer {
         departement.setAnneCreation(departementDto.getAnneCreation());
         departement.setStatutDepartement(departementDto.getStatutDepartement());
         departement.setChefDepartement(EmployeTransformer.dtoToEntity(departementDto.getChefDepartement()));
+        departement.setEcole(EcoleTransformer.dtoToEntity(departementDto.getEcoleDto()));
 
         return departement;
     }
