@@ -1,0 +1,52 @@
+package com.example.presence.security.transformers;
+
+import com.example.presence.security.entities.User;
+import com.example.presence.security.entitiesDto.UserDto;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class UserTransformer {
+    public static UserDto entityToDto(User user){
+        UserDto userDto = new UserDto();
+
+        userDto.setId(user.getId());
+        userDto.setEmail(user.getEmail());
+        userDto.setUsername(user.getUsername());
+        userDto.setPassword(user.getPassword());
+//        userDto.setRole(user.getRole());
+        userDto.setRoles(user.getRoles());
+        userDto.setVerificationCode(user.getVerificationCode());
+        userDto.setVerificationCodeExpiration(user.getVerificationCodeExpiration());
+
+        return userDto;
+    }
+
+    public static User dtoToEntity(UserDto userDto){
+        User user = new User();
+
+        user.setId(userDto.getId());
+        user.setEmail(userDto.getEmail());
+        user.setUserName(userDto.getUsername());
+        user.setPassword(userDto.getPassword());
+//        user.setRole(userDto.getRole());
+        user.setRoles(userDto.getRoles());
+        user.setVerificationCode(userDto.getVerificationCode());
+        user.setVerificationCodeExpiration(userDto.getVerificationCodeExpiration());
+
+        return user;
+    }
+
+    public static List<UserDto> entityToDtoList(List<User> users){
+        return users.stream()
+                .map(UserTransformer::entityToDto)
+                .collect(Collectors.toList());
+    }
+
+    public static List<User> dtoToEntityList(List<UserDto> userDtos){
+        return userDtos.stream()
+                .map(UserTransformer::dtoToEntity)
+                .collect(Collectors.toList());
+    }
+
+}

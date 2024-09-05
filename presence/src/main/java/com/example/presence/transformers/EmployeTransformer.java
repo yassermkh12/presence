@@ -2,6 +2,8 @@ package com.example.presence.transformers;
 
 import com.example.presence.entities.Employe;
 import com.example.presence.entitiesDto.EmployeDto;
+import com.example.presence.security.transformers.UserTransformer;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -13,7 +15,10 @@ public class EmployeTransformer {
         employeDto.setPrenom(employe.getPrenom());
         employeDto.setEmail(employe.getEmail());
         employeDto.setNumeroTelephone(employe.getNumeroTelephone());
+        employeDto.setCin(employe.getCin());
         employeDto.setPoste(employe.getPoste());
+        employeDto.setUserName(employe.getUsername());
+//        employeDto.setUserDto(UserTransformer.entityToDto(employe.getEmployeUser()));
 
         return employeDto;
     }
@@ -25,6 +30,9 @@ public class EmployeTransformer {
         employe.setPrenom(employeDto.getPrenom());
         employe.setPoste(employeDto.getPoste());
         employe.setNumeroTelephone(employeDto.getNumeroTelephone());
+        employe.setCin(employeDto.getCin());
+        employe.setUserName(employeDto.getUserName());
+//        employe.setEmployeUser(UserTransformer.dtoToEntity(employeDto.getUserDto()));
 
         return employe;
     }

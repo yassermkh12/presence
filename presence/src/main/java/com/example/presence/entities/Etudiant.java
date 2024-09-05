@@ -1,5 +1,6 @@
 package com.example.presence.entities;
 
+import com.example.presence.security.entities.User;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -12,17 +13,14 @@ import lombok.NoArgsConstructor;
 @Table(name = "etudiant")
 @NoArgsConstructor
 @Data
-public class Etudiant {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String nom;
-    private String prenom;
-    private String cin;
-    private String email;
-    private String password;
+public class Etudiant extends User{
+    private String cne;
     @ManyToOne
     private Ecole ecole;
     @OneToOne(mappedBy = "etudiant", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Presences presences;
+
+//    @OneToOne
+//    @JoinColumn(name = "user_id")
+//    private User etudiantUser;
 }

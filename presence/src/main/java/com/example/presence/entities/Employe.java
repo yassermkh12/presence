@@ -1,5 +1,6 @@
 package com.example.presence.entities;
 
+import com.example.presence.security.entities.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,14 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Employe {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String nom;
-    private String prenom;
-    private String numeroTelephone;
-    private String email;
+public class Employe extends User{
     private String poste;
     @OneToOne(mappedBy = "directeurEcole", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Ecole ecole;
@@ -27,4 +21,8 @@ public class Employe {
     private Branche branche;
     @OneToOne(mappedBy = "responsableDuModule", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Module module;
+
+//    @OneToOne
+//    @JoinColumn(name = "user_id")
+//    private User employeUser;
 }

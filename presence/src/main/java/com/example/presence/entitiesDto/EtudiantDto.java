@@ -1,5 +1,6 @@
 package com.example.presence.entitiesDto;
 
+import com.example.presence.security.entitiesDto.UserDto;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -30,4 +31,5 @@ public class EtudiantDto {
     @NotBlank(message = "le Password est obligatoire")
     private String password;
     private EcoleDto ecoleDto;
+//    private UserDto userDto;
 }

@@ -2,6 +2,7 @@ package com.example.presence.transformers;
 
 import com.example.presence.entities.Etudiant;
 import com.example.presence.entitiesDto.EtudiantDto;
+import com.example.presence.security.transformers.UserTransformer;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,6 +17,7 @@ public class EtudiantTransformer {
         etudiantDto.setEmail(etudiant.getEmail());
         etudiantDto.setPassword(etudiant.getPassword());
         etudiantDto.setEcoleDto(EcoleTransformer.entityToDto(etudiant.getEcole()));
+//        etudiantDto.setUserDto(UserTransformer.entityToDto(etudiant.getEtudiantUser()));
 
         return etudiantDto;
     }
@@ -29,6 +31,7 @@ public class EtudiantTransformer {
         etudiant.setEmail(etudiantDto.getEmail());
         etudiant.setPassword(etudiantDto.getPassword());
         etudiant.setEcole(EcoleTransformer.dtoToEntity(etudiantDto.getEcoleDto()));
+//        etudiant.setEtudiantUser(UserTransformer.dtoToEntity(etudiantDto.getUserDto()));
 
         return etudiant;
     }

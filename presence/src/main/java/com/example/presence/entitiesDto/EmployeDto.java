@@ -1,5 +1,6 @@
 package com.example.presence.entitiesDto;
 
+import com.example.presence.security.entitiesDto.UserDto;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -30,4 +31,10 @@ public class EmployeDto {
     @NotBlank(message = "le champ poste ne doit pas etre vide")
     @NotNull(message = "le poste est obligatoire")
     private String poste;
+    @NotBlank(message = "le champ CIN ne doit pas etre vide")
+    @NotNull(message = "CIN est obligatoire")
+    @Pattern(regexp = "[A-Za-z]{2}\\d+$", message = "le code CIN doit comporter deux lettres en premier, suivi d une serie de nombre")
+    private String cin;
+    private String userName;
+//    private UserDto userDto;
 }
