@@ -1,10 +1,9 @@
 package com.example.presence.security.services.impl;
 
 import com.example.presence.entities.Employe;
-import com.example.presence.security.authentications.AuthenticationRequest;
-import com.example.presence.security.authentications.AuthenticationResponse;
-import com.example.presence.security.authentications.RegisterEmpoloyeRequest;
-import com.example.presence.security.authentications.ResgisterRequest;
+import com.example.presence.entities.Etudiant;
+import com.example.presence.repositories.IEtudiantRepository;
+import com.example.presence.security.authentications.*;
 import com.example.presence.security.entities.Role;
 import com.example.presence.security.entities.User;
 import com.example.presence.security.exceptions.GlobalException;
@@ -33,6 +32,8 @@ public class AuthenticationService implements IAuthenticationService {
     private PasswordEncoder passwordEncoder;
     @Autowired
     private IRoleRepository roleRepository;
+    @Autowired
+    private IEtudiantRepository etudiantRepository;
 
     @Transactional
     public AuthenticationResponse register(ResgisterRequest resgisterRequest) throws GlobalException {
@@ -87,7 +88,8 @@ public class AuthenticationService implements IAuthenticationService {
         }
         log.info("*** le processus de REGISTER commence ***");
         Employe employe = new Employe();
-        Role role = roleRepository.findById(2L).orElse(null);
+        Role userRole = roleRepository.findByName("USER").orElse(null);
+        Role employeRole = roleRepository.findByName("EMPLOYE").orElse(null);
 
         employe.setUserName(resgisterRequest.getUsername());
         employe.setPrenom(resgisterRequest.getPrenom());
@@ -97,7 +99,8 @@ public class AuthenticationService implements IAuthenticationService {
         employe.setPoste(resgisterRequest.getPoste());
         employe.setPassword(passwordEncoder.encode(resgisterRequest.getPassword()));
         employe.setEmail(resgisterRequest.getEmail());
-        employe.getRoles().add(role);
+        employe.getRoles().add(userRole);
+        employe.getRoles().add(employeRole);
 
         log.info("l utilisateur depuis user : "+ employe);
         log.info("l utilisateur depuis registerRequest : "+ resgisterRequest);
@@ -114,6 +117,60 @@ public class AuthenticationService implements IAuthenticationService {
         return authenticationResponse;
 
     }
+
+    @Transactional
+    public AuthenticationResponse registerEtudiant(RegisterEtudiantRequest resgisterRequest) throws GlobalException {
+
+        if (userRepository.findByUserName(resgisterRequest.getUsername()) != null) {
+            log.info("username deja utiliser");
+            throw new GlobalException("username deja utiliser");
+        }
+        if (userRepository.findByEmail(resgisterRequest.getEmail()).isPresent()){
+            throw new GlobalException("l email est deja utiliser");
+        }
+        if(userRepository.findByCin(resgisterRequest.getCin()).isPresent()){
+            throw new GlobalException("la carte d identite national est deja utilise");
+        }
+        if (userRepository.findByNumeroTelephone(resgisterRequest.getNumeroTelephone()).isPresent()){
+            throw new GlobalException("le numero de telephone est deja utilise");
+        }
+        if (etudiantRepository.findByCne(resgisterRequest.getCne()).isPresent()){
+            throw new GlobalException("le CNE existe deja");
+        }
+        log.info("*** le processus de REGISTER commence ***");
+//        User user = new User();
+        Etudiant etudiant = new Etudiant();
+        Role userRole = roleRepository.findByName("USER").orElse(null);
+        Role etudiantRole = roleRepository.findByName("ETUDIANT").orElse(null);
+
+        etudiant.setNom(resgisterRequest.getNom());
+        etudiant.setPrenom(resgisterRequest.getPrenom());
+        etudiant.setCin(resgisterRequest.getCin());
+        etudiant.setCne(resgisterRequest.getCne());
+        etudiant.setNumeroTelephone(resgisterRequest.getNumeroTelephone());
+        etudiant.setEcole(resgisterRequest.getEcole());
+        etudiant.setUserName(resgisterRequest.getUsername());
+        etudiant.setPassword(passwordEncoder.encode(resgisterRequest.getPassword()));
+        etudiant.setEmail(resgisterRequest.getEmail());
+        etudiant.getRoles().add(userRole);
+        etudiant.getRoles().add(etudiantRole);
+
+        log.info("l utilisateur depuis user : "+ etudiant);
+        log.info("l utilisateur depuis registerRequest : "+ resgisterRequest);
+        userRepository.save(etudiant);
+
+        String jwtToken =  jwtService.generateJwtToken(etudiant);
+        String jwtRefrecheToken = jwtService.generateRefrechTokenFromToken(jwtToken);
+        AuthenticationResponse authenticationResponse = new AuthenticationResponse();
+        authenticationResponse.setToken(jwtToken);
+        authenticationResponse.setRefrechToken(jwtRefrecheToken);
+
+        log.info("authentication reponse est : "+ authenticationResponse);
+
+        return authenticationResponse;
+
+    }
+
 
     public AuthenticationResponse auhenticate(AuthenticationRequest authenticationRequest) throws GlobalException{
         log.info("*** le processus d authentification commence ***");

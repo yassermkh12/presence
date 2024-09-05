@@ -22,8 +22,12 @@ public class PresenceApplication implements CommandLineRunner {
 		if (roleRepository.count() == 0) {
 			Role adminRole = new Role(1L,"ADMIN");
 			Role userRole = new Role(2L,"USER");
+			Role etudiantRole = new Role(3L,"ETUDIANT");
+			Role employeRole = new Role(4L,"EMPLOYE");
 			roleRepository.save(adminRole);
 			roleRepository.save(userRole);
+			roleRepository.save(etudiantRole);
+			roleRepository.save(employeRole);
 		}
 	}
 }

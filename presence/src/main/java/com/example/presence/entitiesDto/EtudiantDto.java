@@ -27,9 +27,14 @@ public class EtudiantDto {
     @NotBlank(message = "l email est obligatoire")
     @Email(message = "adresse email est invalide")
     private String email;
-    @NotNull(message = "le champ Password ne doit pas etre null")
-    @NotBlank(message = "le Password est obligatoire")
-    private String password;
+    @NotNull(message = "le champ CNE ne doit pas etre null")
+    @NotBlank(message = "le CNE est obligatoire")
+    private String cne;
+    private String userName;
+    @NotBlank(message = "le champ numero de telephone ne doit pas etre vide")
+    @NotNull(message = "le numero de telephone est obligatoire")
+    @Pattern(regexp = "\\d{10}", message = "Le numéro de téléphone doit avoir 10 chiffres.")
+    private String numeroTelephone;
     private EcoleDto ecoleDto;
 //    private UserDto userDto;
 }

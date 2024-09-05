@@ -47,7 +47,7 @@ public class EtudiantService implements IEtudiantService {
             etudiant.setPrenom(etudiantDtoUpdate.getPrenom());
             etudiant.setCin(etudiantDtoUpdate.getCin());
             etudiant.setEmail(etudiantDtoUpdate.getEmail());
-            etudiant.setPassword(etudiantDtoUpdate.getPassword());
+//            etudiant.setPassword(etudiantDtoUpdate.getPassword());
             etudiant.setEcole(EcoleTransformer.dtoToEntity(etudiantDtoUpdate.getEcoleDto()));
 
             etudiantRepository.save(etudiant);

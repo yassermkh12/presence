@@ -43,10 +43,10 @@ public class SecurityConfig{
                                         .requestMatchers(HttpMethod.PUT,"/api/recuperation/**").permitAll()
                                         .requestMatchers(HttpMethod.POST,"/api/auth/**").permitAll()
                                         //test
-//                                        .requestMatchers(HttpMethod.PUT,"/api/employe/**").permitAll()
-//                                        .requestMatchers(HttpMethod.POST,"/api/employe/**").permitAll()
-//                                        .requestMatchers(HttpMethod.DELETE,"/api/employe/**").permitAll()
-//                                        .requestMatchers(HttpMethod.GET,"/api/employe/**").permitAll()
+                                        .requestMatchers(HttpMethod.PUT,"/api/etudiant/**").permitAll()
+                                        .requestMatchers(HttpMethod.POST,"/api/etudiant/**").permitAll()
+                                        .requestMatchers(HttpMethod.DELETE,"/api/etudiant/**").permitAll()
+                                        .requestMatchers(HttpMethod.GET,"/api/etudiant/**").permitAll()
 
                                         .anyRequest().authenticated()
                         )

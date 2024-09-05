@@ -1,9 +1,6 @@
 package com.example.presence.security.controllers;
 
-import com.example.presence.security.authentications.AuthenticationRequest;
-import com.example.presence.security.authentications.AuthenticationResponse;
-import com.example.presence.security.authentications.RegisterEmpoloyeRequest;
-import com.example.presence.security.authentications.ResgisterRequest;
+import com.example.presence.security.authentications.*;
 import com.example.presence.security.services.IAuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +26,13 @@ public class AuthenticationController {
             @RequestBody RegisterEmpoloyeRequest resgisterRequest
     ){
         return ResponseEntity.ok(authenticationService.registerEmploye(resgisterRequest));
+    }
+
+    @PostMapping("/register-etudiant")
+    public ResponseEntity<AuthenticationResponse> registerEtudiant(
+            @RequestBody RegisterEtudiantRequest resgisterRequest
+    ){
+        return ResponseEntity.ok(authenticationService.registerEtudiant(resgisterRequest));
     }
 
     @PostMapping("/authenticate")

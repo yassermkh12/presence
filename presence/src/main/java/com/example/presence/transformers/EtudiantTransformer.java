@@ -15,7 +15,9 @@ public class EtudiantTransformer {
         etudiantDto.setPrenom(etudiant.getPrenom());
         etudiantDto.setCin(etudiant.getCin());
         etudiantDto.setEmail(etudiant.getEmail());
-        etudiantDto.setPassword(etudiant.getPassword());
+        etudiantDto.setCne(etudiant.getCne());
+        etudiantDto.setNumeroTelephone(etudiant.getNumeroTelephone());
+        etudiantDto.setUserName(etudiant.getUsername());
         etudiantDto.setEcoleDto(EcoleTransformer.entityToDto(etudiant.getEcole()));
 //        etudiantDto.setUserDto(UserTransformer.entityToDto(etudiant.getEtudiantUser()));
 
@@ -29,7 +31,9 @@ public class EtudiantTransformer {
         etudiant.setPrenom(etudiantDto.getPrenom());
         etudiant.setCin(etudiantDto.getCin());
         etudiant.setEmail(etudiantDto.getEmail());
-        etudiant.setPassword(etudiantDto.getPassword());
+        etudiant.setCne(etudiantDto.getCne());
+        etudiant.setNumeroTelephone(etudiantDto.getNumeroTelephone());
+        etudiant.setUserName(etudiantDto.getUserName());
         etudiant.setEcole(EcoleTransformer.dtoToEntity(etudiantDto.getEcoleDto()));
 //        etudiant.setEtudiantUser(UserTransformer.dtoToEntity(etudiantDto.getUserDto()));
 
