@@ -55,9 +55,11 @@ public class EmployeService implements IEmployeService {
         if (userRepository.findByNumeroTelephone(employe.getNumeroTelephone()).isPresent()){
             throw new GlobalException("le numero de telephone est deja utilise");
         }
-        Role role = roleRepository.findById(2L).orElse(null);
+        Role userRole = roleRepository.findByName("USER").orElse(null);
+        Role employeRole = roleRepository.findByName("EMPLOYE").orElse(null);
 
-        employe.getRoles().add(role);
+        employe.getRoles().add(userRole);
+        employe.getRoles().add(employeRole);
         employe.setPassword(passwordEncoder.encode(employe.getUsername()));
         userRepository.save(employe);
 

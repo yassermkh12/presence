@@ -22155,3 +22155,35 @@ java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child 
 23:01:07.237 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
 23:01:07.242 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 23:01:07.259 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+23:05:56.368 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+23:05:56.678 [main] INFO  c.e.presence.PresenceApplication - Starting PresenceApplication using Java 22.0.1 with PID 14388 (C:\Users\mokht\Desktop\workspace2\springboot\epresense\presence\presence\target\classes started by mokht in C:\Users\mokht\Desktop\workspace2\springboot\epresense\presence\presence)
+23:05:56.680 [main] INFO  c.e.presence.PresenceApplication - No active profile set, falling back to 1 default profile: "default"
+23:05:58.919 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+23:05:59.195 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 259 ms. Found 10 JPA repository interfaces.
+23:06:00.861 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+23:06:00.899 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+23:06:00.905 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+23:06:00.906 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.15]
+23:06:01.234 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+23:06:01.238 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 4420 ms
+23:06:01.737 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+23:06:02.010 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.13.Final
+23:06:02.026 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+23:06:02.864 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+23:06:02.936 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+23:06:03.263 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@602298b
+23:06:03.265 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+23:06:03.327 [main] WARN  org.hibernate.dialect.Dialect - HHH000511: The 5.5.0 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 5.7.0. Check the community dialects project for available legacy versions.
+23:06:03.337 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+23:06:05.803 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+23:06:06.182 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+23:06:06.967 [main] INFO  c.e.p.s.s.UserDetailsServiceConfig - **************************** user details service ************************
+23:06:07.957 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+23:06:08.371 [main] INFO  c.e.p.security.cors.CorsConfig - ip adresse : 192.168.11.108
+23:06:08.598 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4d25943d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2eea0775, org.springframework.security.web.context.SecurityContextHolderFilter@30d3f583, org.springframework.security.web.header.HeaderWriterFilter@299615a5, org.springframework.web.filter.CorsFilter@495a9305, org.springframework.security.web.authentication.logout.LogoutFilter@1c2273f6, com.example.presence.security.filters.JwtAuthenticationFilter@949f0d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@73b034ca, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@58a5b69c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6a0a0f12, org.springframework.security.web.session.SessionManagementFilter@38276668, org.springframework.security.web.access.ExceptionTranslationFilter@154cbb46, org.springframework.security.web.access.intercept.AuthorizationFilter@149ef64a]
+23:06:09.019 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+23:06:09.061 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+23:06:09.078 [main] INFO  c.e.presence.PresenceApplication - Started PresenceApplication in 13.464 seconds (process running for 14.827)
+23:07:12.004 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+23:07:12.010 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+23:07:12.028 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
