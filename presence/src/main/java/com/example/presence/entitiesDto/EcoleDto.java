@@ -2,6 +2,7 @@ package com.example.presence.entitiesDto;
 
 import com.example.presence.entities.enums.TypeEcole;
 import jakarta.validation.constraints.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +11,7 @@ import java.util.*;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class EcoleDto {
     private Long id;
     @NotBlank(message = "le champ adresse ecole ne doit pas etre vide")

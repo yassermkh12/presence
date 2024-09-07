@@ -42,12 +42,6 @@ public class SecurityConfig{
                                         .requestMatchers(HttpMethod.GET,"/api/recuperation/**").permitAll()
                                         .requestMatchers(HttpMethod.PUT,"/api/recuperation/**").permitAll()
                                         .requestMatchers(HttpMethod.POST,"/api/auth/**").permitAll()
-                                        //test
-                                        .requestMatchers(HttpMethod.PUT,"/api/etudiant/**").permitAll()
-                                        .requestMatchers(HttpMethod.POST,"/api/etudiant/**").permitAll()
-                                        .requestMatchers(HttpMethod.DELETE,"/api/etudiant/**").permitAll()
-                                        .requestMatchers(HttpMethod.GET,"/api/etudiant/**").permitAll()
-
                                         .anyRequest().authenticated()
                         )
                         .sessionManagement(session -> session
